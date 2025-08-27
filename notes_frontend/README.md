@@ -1,36 +1,54 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Personal Notes Manager - Frontend (Next.js)
 
-## Getting Started
+A modern, minimalistic light-theme web UI for creating, editing, searching, and managing personal notes.
 
-First, run the development server:
+## Features
+- User authentication (demo, localStorage-based)
+- Create, edit, and delete notes
+- Search and filter notes by text and tag
+- Responsive design with a header, sidebar, main editor, and modal dialogs
+- Color palette:
+  - Primary: #1E90FF
+  - Secondary: #333333
+  - Accent: #FFD700
+
+## Quick Start
+
+Install dependencies and run the dev server:
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Environment Variables
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Copy `.env.example` to `.env.local` and set as needed:
 
-## Learn More
+- `NEXT_PUBLIC_API_BASE_URL` (optional): Base URL for API calls. If empty, the app uses demo localStorage persistence.
 
-To learn more about Next.js, take a look at the following resources:
+## Structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `src/app` — App Router pages and global layout/styles
+  - `/` — Landing page
+  - `/auth` — Sign-in page (demo)
+  - `/notes` — Notes UI (sidebar + editor)
+- `src/lib` — Helpers (auth, storage, theme, api)
+- `src/types` — Shared types
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Notes Persistence
 
-## Deploy on Vercel
+For this exercise, data is stored in the browser’s localStorage. To integrate a real backend, replace calls in `src/lib/storage.ts` with API client functions in `src/lib/api.ts` and set `NEXT_PUBLIC_API_BASE_URL`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Scripts
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `npm run dev` — Start dev server
+- `npm run build` — Build for production
+- `npm start` — Start production server
+- `npm run lint` — Lint
+
+## License
+
+MIT
